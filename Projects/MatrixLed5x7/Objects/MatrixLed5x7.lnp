@@ -1,0 +1,3 @@
+".\Objects\main.obj" 
+TO ".\Objects\MatrixLed5x7" 
+PRINT(".\Listings\MatrixLed5x7.m51") RAMSIZE(256) 

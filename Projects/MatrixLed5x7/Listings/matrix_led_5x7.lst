@@ -1,0 +1,86 @@
+C51 COMPILER V9.60.0.0   MATRIX_LED_5X7                                                    11/01/2023 16:56:21 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MATRIX_LED_5X7
+OBJECT MODULE PLACED IN .\Objects\matrix_led_5x7.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE Z:\Users\nmhtdytgmail.com\Embedded\8051\Libraries\MatrixLed5x7\matrix_le
+                    -d_5x7.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\matrix_led_5x7.lst) TABS(2) OBJECT(.\Objects\matrix
+                    -_led_5x7.obj)
+
+line level    source
+
+   1          #include "matrix_led_5x7.h"
+   2          #include "main.h"
+   3          
+   4          void MATRIX_LED_5X7_loadRowData(unsigned char row_data)
+   5          {
+   6   1        MATRIX_LED_5X7_ROW_0 = row_data & 0x01;
+   7   1        MATRIX_LED_5X7_ROW_1 = row_data & 0x02;
+   8   1        MATRIX_LED_5X7_ROW_2 = row_data & 0x04;
+   9   1        MATRIX_LED_5X7_ROW_3 = row_data & 0x08;
+  10   1        MATRIX_LED_5X7_ROW_4 = row_data & 0x10;
+  11   1        MATRIX_LED_5X7_ROW_5 = row_data & 0x20;
+  12   1        MATRIX_LED_5X7_ROW_6 = row_data & 0x40;
+  13   1      }
+  14          
+  15          #define MATRIX_LED_5X7_DELAY_MS 1
+  16          
+  17          void MATRIX_LED_5X7_fastDisplay(unsigned char *p_code_arr, unsigned char off_set, unsigned char spacing)
+  18          {
+  19   1        unsigned char code_index, row_data;
+  20   1        code_index = 0;
+  21   1        row_data = (code_index + off_set) % (5 + spacing) < 5 ? *(p_code_arr + (code_index + off_set) % (5 + spac
+             -ing)) : 0x7F;
+  22   1        MATRIX_LED_5X7_loadRowData(row_data);
+  23   1        MATRIX_LED_5X7_COL_0 = HIGH;
+  24   1        delay_ms(MATRIX_LED_5X7_DELAY_MS);
+  25   1        MATRIX_LED_5X7_COL_0 = LOW;
+  26   1        
+  27   1        code_index++;
+  28   1        row_data = (code_index + off_set) % (5 + spacing) < 5 ? *(p_code_arr + (code_index + off_set) % (5 + spac
+             -ing)) : 0x7F;
+  29   1        MATRIX_LED_5X7_loadRowData(row_data);
+  30   1        MATRIX_LED_5X7_COL_1 = HIGH;
+  31   1        delay_ms(MATRIX_LED_5X7_DELAY_MS);
+  32   1        MATRIX_LED_5X7_COL_1 = LOW;
+  33   1        
+  34   1        code_index++;
+  35   1        row_data = (code_index + off_set) % (5 + spacing) < 5 ? *(p_code_arr + (code_index + off_set) % (5 + spac
+             -ing)) : 0x7F;
+  36   1        MATRIX_LED_5X7_loadRowData(row_data);
+  37   1        MATRIX_LED_5X7_COL_2 = HIGH;
+  38   1        delay_ms(MATRIX_LED_5X7_DELAY_MS);
+  39   1        MATRIX_LED_5X7_COL_2 = LOW;
+  40   1        
+  41   1        code_index++;
+  42   1        row_data = (code_index + off_set) % (5 + spacing) < 5 ? *(p_code_arr + (code_index + off_set) % (5 + spac
+             -ing)) : 0x7F;
+  43   1        MATRIX_LED_5X7_loadRowData(row_data);
+  44   1        MATRIX_LED_5X7_COL_3 = HIGH;
+  45   1        delay_ms(MATRIX_LED_5X7_DELAY_MS);
+  46   1        MATRIX_LED_5X7_COL_3 = LOW;
+  47   1        
+  48   1        code_index++;
+  49   1        row_data = (code_index + off_set) % (5 + spacing) < 5 ? *(p_code_arr + (code_index + off_set) % (5 + spac
+C51 COMPILER V9.60.0.0   MATRIX_LED_5X7                                                    11/01/2023 16:56:21 PAGE 2   
+
+             -ing)) : 0x7F;
+  50   1        MATRIX_LED_5X7_loadRowData(row_data);
+  51   1        MATRIX_LED_5X7_COL_4 = HIGH;
+  52   1        delay_ms(MATRIX_LED_5X7_DELAY_MS);
+  53   1        MATRIX_LED_5X7_COL_4 = LOW;
+  54   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    458    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       7
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

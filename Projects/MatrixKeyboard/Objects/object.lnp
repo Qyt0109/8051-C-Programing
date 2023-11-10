@@ -1,0 +1,4 @@
+".\Objects\main.obj",
+".\Objects\matrix_keyboard_4x4.obj" 
+TO ".\Objects\object" 
+PRINT(".\Listings\object.m51") RAMSIZE(256) 

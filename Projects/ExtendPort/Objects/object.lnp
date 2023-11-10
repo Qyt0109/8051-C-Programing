@@ -1,0 +1,5 @@
+".\Objects\main.obj",
+".\Objects\delay_ms.obj",
+".\Objects\ic74595.obj" 
+TO ".\Objects\object" 
+PRINT(".\Listings\object.m51") RAMSIZE(256) 

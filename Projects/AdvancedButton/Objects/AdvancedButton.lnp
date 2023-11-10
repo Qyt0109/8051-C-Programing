@@ -1,0 +1,4 @@
+".\Objects\main.obj",
+".\Objects\delay_ms.obj" 
+TO ".\Objects\AdvancedButton" 
+PRINT(".\Listings\AdvancedButton.m51") RAMSIZE(256) 

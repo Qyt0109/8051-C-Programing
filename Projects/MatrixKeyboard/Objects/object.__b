@@ -1,0 +1,4 @@
+TRANSFER
+".\Objects\main.obj",
+".\Objects\delay_ms.obj" 
+TO ".\Objects\object.LIB"

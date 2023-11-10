@@ -1,0 +1,62 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              10/31/2023 17:55:18 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include "main.h"
+   2          
+   3          unsigned char code SEVEN_SEGMENT_LED_ANODE_CODES[] = {0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x80
+             -, 0x90, 0x88, 0x83, 0xC6, 0xA1, 0x86, 0x8E};
+   4          unsigned char code SEVEN_SEGMENT_LED_CATHODE_CODES[]  = {0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0
+             -x7F, 0x6F, 0x77, 0x7C, 0x39, 0x5E, 0x79, 0x71};
+   5          
+   6          void setup()
+   7          {
+   8   1        // setup code here, to run once:
+   9   1        
+  10   1      }
+  11          
+  12          unsigned char code_index;
+  13          
+  14          void loop()
+  15          {
+  16   1        // code section to run repeatedly:
+  17   1        unsigned char bytes_arr[3];
+  18   1        unsigned char byte_index;
+  19   1        for(byte_index = 0; byte_index < sizeof(bytes_arr); byte_index++)
+  20   1        {
+  21   2          bytes_arr[byte_index] = SEVEN_SEGMENT_LED_ANODE_CODES[(code_index + byte_index) % 10];
+  22   2        }
+  23   1        code_index += sizeof(bytes_arr);
+  24   1        
+  25   1        IC74595_pushBytes(bytes_arr, sizeof(bytes_arr));
+  26   1        delay_ms(1000);
+  27   1      }
+  28          
+  29          void main()
+  30          {
+  31   1        setup();
+  32   1        while(1)
+  33   1        {
+  34   2          loop();
+  35   2        }
+  36   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     84    ----
+   CONSTANT SIZE    =     32    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

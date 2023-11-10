@@ -1,0 +1,130 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              11/01/2023 16:56:20 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include "main.h"
+   2          
+   3          unsigned char MATRIX_LED_5X7_CODES[16][5]  = {{0xC1, 0xAE, 0xB6, 0xBA, 0xC1},   // 0
+   4                                                        {0x7F, 0xBD, 0x00, 0xBF, 0x7F},   // 1
+   5                                                        {0x1D, 0x2E, 0x36, 0x36, 0x39},   // 2
+   6                                                        {0x5D, 0x3E, 0x36, 0x36, 0x49},   // 3
+   7                                                        {0x67, 0x6B, 0x6D, 0x00, 0x6F},   // 4
+   8                                                        {0x50, 0x36, 0x36, 0x36, 0x4E},   // 5
+   9                                                        {0x41, 0x36, 0x36, 0x36, 0x4D},   // 6
+  10                                                        {0x7E, 0x7E, 0x0E, 0x76, 0x78},   // 7
+  11                                                        {0x49, 0x36, 0x36, 0x36, 0x49},   // 8
+  12                                                        {0x59, 0x36, 0x36, 0x36, 0x41},   // 9
+  13                                                        {0x01, 0x76, 0x76, 0x76, 0x01},   // A
+  14                                                        {0x00, 0x36, 0x36, 0x36, 0x49},   // B
+  15                                                        {0x41, 0x3E, 0x3E, 0x3E, 0x5D},   // C
+  16                                                        {0x00, 0xBE, 0xBE, 0xBE, 0x41},   // D
+  17                                                        {0x00, 0x36, 0x36, 0x36, 0x3E},   // E
+  18                                                        {0x00, 0x76, 0x76, 0x76, 0x7E}};  // F
+  19          
+  20          void setup()
+  21          {
+  22   1        // setup code here, to run once:
+  23   1      }
+  24          
+  25          #define DELAY_MS 1000
+  26          // With SPACING and OFFSET
+  27          #define TIME 2
+  28          #define SPACING 3
+  29          #define OFFSET (5 + SPACING) * (TIME - 1) + 1
+  30          // Stand still
+  31          #define SPACING_OFF 0
+  32          #define OFFSET_OFF 0
+  33          
+  34          
+  35          bit mode;
+  36          void checkSwitchModeButtonToToggleMode()
+  37          {
+  38   1        SWITCH_MODE_BUTTON = LOW;
+  39   1        if(SWITCH_MODE_BUTTON == HIGH)
+  40   1        {
+  41   2          delay_ms(20);
+  42   2          mode = !mode;
+  43   2          while(SWITCH_MODE_BUTTON == HIGH)
+  44   2          {
+  45   3            // Waiting for button to be released
+  46   3          }
+  47   2        }
+  48   1      }
+  49          
+  50          void loop()
+  51          {
+  52   1        // code section to run repeatedly:
+  53   1        unsigned char code_index;
+  54   1        unsigned char number_of_codes = sizeof(MATRIX_LED_5X7_CODES) / sizeof(MATRIX_LED_5X7_CODES[0]);
+C51 COMPILER V9.60.0.0   MAIN                                                              11/01/2023 16:56:20 PAGE 2   
+
+  55   1        if(mode)
+  56   1        {
+  57   2          // With SPACING and OFFSET
+  58   2          for(code_index = 0; code_index < number_of_codes; code_index++)
+  59   2          {
+  60   3            unsigned char off_set;
+  61   3            for(off_set = 0; off_set < OFFSET; off_set++)
+  62   3            {
+  63   4              unsigned char x;
+  64   4              for(x = 0; x < (DELAY_MS/(MATRIX_LED_5X7_DELAY_MS * 5))/5; x++)
+  65   4              {
+  66   5                MATRIX_LED_5X7_fastDisplay(MATRIX_LED_5X7_CODES[code_index], off_set, SPACING);
+  67   5                checkSwitchModeButtonToToggleMode();
+  68   5                if(!mode)
+  69   5                  break;
+  70   5              }
+  71   4              if(!mode)
+  72   4                break;
+  73   4            }
+  74   3            if(!mode)
+  75   3              break;
+  76   3          }
+  77   2        }
+  78   1        else
+  79   1        {
+  80   2          // Stand still
+  81   2          for(code_index = 0; code_index < number_of_codes; code_index++)
+  82   2          {
+  83   3            unsigned char x;
+  84   3            for(x = 0; x < (DELAY_MS/(MATRIX_LED_5X7_DELAY_MS * 5)); x++)
+  85   3            {
+  86   4              MATRIX_LED_5X7_fastDisplay(MATRIX_LED_5X7_CODES[code_index], OFFSET_OFF, SPACING_OFF);
+  87   4              checkSwitchModeButtonToToggleMode();
+  88   4              if(mode)
+  89   4                break;
+  90   4            }
+  91   3            if(mode)
+  92   3              break;
+  93   3          }
+  94   2        }
+  95   1      }
+  96          
+  97          void main()
+  98          {
+  99   1        setup();
+ 100   1        while(1)
+ 101   1        {
+ 102   2          loop();
+ 103   2        }
+ 104   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    178    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     80       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
