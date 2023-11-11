@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   LCD                                                               11/11/2023 14:49:12 PAGE 1   
+C51 COMPILER V9.60.0.0   LCD                                                               11/12/2023 04:32:45 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE LCD
@@ -8,99 +8,218 @@ COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\..\Libraries\LCD\lcd.c OPTIMI
 
 line level    source
 
-   1          #include "lcd.h"
-   2          #include "main.h"
-   3          
-   4          // Validation
-   5          #ifndef LCD_SETTINGS_USING_DELAY
-                #error "Missing #define LCD_SETTINGS_USING_DELAY LCD_DELAY_TIMER or #define LCD_SETTINGS_USING_DELAY LCD_
-             -DELAY_FOR_LOOP in main.h file!"
+   1          /* Example settings.h
+   2          #ifndef SETTINGS_H
+   3          // {
+   4            #define SETTINGS_H
+   5            
+   6            #define FREQ_OSC FREQ_12MHZ
+   7            #define DELAY_MODE DELAY_USING_FOR_LOOP
+   8            
+   9            #define LCD_SETTINGS_USING_DELAY LCD_DELAY_FOR_LOOP
+  10            #define LCD_SETTINGS_DISPLAY_MODE LCD_4BIT_1LINE_5x7FONT
+  11          // }
+  12          #endif
+  13          */
+  14          
+  15          /* Example port.h
+  16          #ifndef PORT_H
+  17          // {
+  18            #define PORT_H
+  19          
+  20            sbit LCD_RS = P2^0;
+  21            sbit LCD_RW = P2^1;
+  22            sbit LCD_EN = P2^2;
+  23          
+  24            sbit LCD_D0 = P3^0;
+  25            sbit LCD_D1 = P3^1;
+  26            sbit LCD_D2 = P3^2;
+  27            sbit LCD_D3 = P3^3;
+  28            sbit LCD_D4 = P3^4;
+  29            sbit LCD_D5 = P3^5;
+  30            sbit LCD_D6 = P3^6;
+  31            sbit LCD_D7 = P3^7;
+  32          // }
+  33          #endif
+  34          */
+  35          
+  36          #include "lcd.h"
+  37          
+  38          // Validation
+  39          #ifndef DELAY_MODE
+                #error "DELAY_MODE not defined!"
               #endif
-   8          
-   9          #ifndef LCD_SETTINGS_DISPLAY_MODE
-                #error "Missing #define LCD_SETTINGS_DISPLAY_MODE LCD_4BIT_1LINE_5x7FONT/LCD_4BIT_2LINE_5x7FONT/LCD_8BIT_
-             -1LINE_5x7FONT/LCD_8BIT_2LINE_5x7FONT in main.h file!"
+  42          
+  43          #ifndef LCD_SETTINGS_BIT
+              // {
+                #error "LCD_SETTINGS_BIT not defined!"
+              // }
               #endif
-  12          
-  13          // Implement coresponding LCD_delay_ms
-  14          #if(LCD_SETTINGS_USING_DELAY == LCD_DELAY_TIMER)
-                #error "Not yet implement LCD_delay_us for this LCD_SETTINGS_USING_DELAY config!"
-                void LCD_delay_us(unsigned int t_us)
+  48          
+  49          #ifndef LCD_SETTINGS_LINE
+              // {
+                #error "LCD_SETTINGS_LINE not defined!"
+              // }
+              #endif
+  54          
+C51 COMPILER V9.60.0.0   LCD                                                               11/12/2023 04:32:45 PAGE 2   
+
+  55          #ifndef LCD_SETTINGS_FONT
+              // {
+                #error "LCD_SETTINGS_FONT not defined!"
+              // }
+              #endif
+  60          
+  61          // Delay for sending cmd/dta
+  62          #if (DELAY_MODE == DELAY_USING_TIMER_0 || DELAY_MODE == DELAY_USING_TIMER_1)
+              // {
+                #error "TODO: Need to implement for this DELAY_MODE config!"
+                void LCD_delay1502us()
                 {
-                  // TODO: Implement this
+                  delay_us(1502);
                 }
-              #elif(LCD_SETTINGS_USING_DELAY == LCD_DELAY_FOR_LOOP)
-  21            void LCD_delay_us(unsigned int t_us)
-  22            {
-  23   1          delay_us(t_us);
-  24   1        }
-  25          #else
+                
+                void LCD_delay37us()
+                {
+                  delay_us(37);
+                }
+              // }
+              #elif (DELAY_MODE == DELAY_USING_FOR_LOOP)
+  76          // {
+  77            void LCD_delay1502us()
+  78            {
+  79   1          delay_ms(2);
+  80   1        }
+  81            
+  82            void LCD_delay37us()
+  83            {
+  84   1          delay_ms(1);
+  85   1        }
+  86            
+  87            void LCD_init()
+  88            {
+  89   1          /* ___KHOI TAO LCD___
+  90   1          Tu khoi tao (HD44780): Che do giao tiep 8 bit, hien thi 1 dong tren,
+  91   1                                 tu dong tang con tro, tat hien thi
+  92   1          Khoi tao tuy chinh:
+  93   1          Cap nguon LCD, Delay 15-40ms (100ms)
+  94   1          Gui ma lenh 0011 xxxx (Lay 0x30 cho de nho)
+  95   1          Delay 4100us  (5ms)
+  96   1          Gui ma lenh 0011 xxxx
+  97   1          Delay 100us   (1ms)
+  98   1          Gui ma lenh 0011 xxxx
+  99   1          Gui ma lenh 001[DL] [N][F]xx (Thuong lay 0x38)
+ 100   1          trong do: [DL]=0: Giao tiep 8 bit (DB7-DB0)
+ 101   1                    [DL]=1: Giao tiep 4 bit (DB7-DB4), byte lenh/du lieu se duoc gui/nhan 4 bit cao truoc, 4 bit thap s
+             -au
+ 102   1                    [N] =0: Hien thi 1 dong
+ 103   1                    [N] =1: Hien thi 2 dong
+ 104   1                    [F] =0: Font 5x8  (hien thi ky tu o dong tren hoac dong duoi)
+ 105   1                    [F] =1: Font 5x10 (hien thi ky tu ton mat ca 2 dong) */
+ 106   1          LCD_send_cmd(0x30);
+ 107   1          delay_ms(5);
+ 108   1          LCD_send_cmd(0x30);
+ 109   1          delay_ms(1);
+ 110   1          LCD_send_cmd(0x30);
+ 111   1          
+ 112   1          LCD_send_cmd(0x20 | (LCD_SETTINGS_BIT ? 0x10 : 0x00) | (LCD_SETTINGS_LINE ? 0x08 : 0x00) | (LCD_SETTINGS
+             -_FONT ? 0x04 : 0x00));
+ 113   1        }
+ 114          // }
+C51 COMPILER V9.60.0.0   LCD                                                               11/12/2023 04:32:45 PAGE 3   
+
+ 115          #else
+              // {
                 #error "No any LCD_SETTINGS_USING_DELAY with that code, make sure using LCD_DELAY_TIMER or LCD_DELAY_FOR_
              -LOOP instead!"
+              // }
               #endif
-  28          
-  29          #if(LCD_SETTINGS_DISPLAY_MODE == LCD_4BIT_1LINE_5x7FONT || LCD_SETTINGS_DISPLAY_MODE == LCD_4BIT_2LINE_5x7
-             -FONT)
-  30            void LCD_out(unsigned char byte)
-  31            {
-  32   1          LCD_D0 = byte & 0x01;   // ---- ---x
-  33   1          LCD_D1 = byte & 0x02;   // ---- --x-
-  34   1          LCD_D2 = byte & 0x04;   // ---- -x--
-  35   1          LCD_D3 = byte & 0x08;   // ---- x---
-  36   1        }
-  37            void LCD_cmd(unsigned char cmd)
-  38            {
-  39   1          
-  40   1        }
-*** WARNING C280 IN LINE 37 OF ..\..\Libraries\LCD\lcd.c: 'cmd': unreferenced local variable
-  41          #elif(LCD_SETTINGS_DISPLAY_MODE == LCD_8BIT_1LINE_5x7FONT || LCD_SETTINGS_DISPLAY_MODE == LCD_8BIT_2LINE_5
-             -x7FONT)
-                void LCD_out(unsigned char byte)
+ 120          
+ 121          #if (LCD_SETTINGS_BIT == LCD_4BIT)
+              // {
+                void LCD_out(byte out_byte)
                 {
-                  LCD_D0 = byte & 0x01;   // ---- ---x
-                  LCD_D1 = byte & 0x02;   // ---- --x-
-                  LCD_D2 = byte & 0x04;   // ---- -x--
-                  LCD_D3 = byte & 0x08;   // ---- x---
-                  LCD_D4 = byte & 0x10;   // ---x ----
-C51 COMPILER V9.60.0.0   LCD                                                               11/11/2023 14:49:12 PAGE 2   
+                  LCD_D0 = out_byte & 0x01;   // ---- ---x
+                  LCD_D1 = out_byte & 0x02;   // ---- --x-
+                  LCD_D2 = out_byte & 0x04;   // ---- -x--
+                  LCD_D3 = out_byte & 0x08;   // ---- x---
+                }
+              // }
+              #elif (LCD_SETTINGS_BIT == LCD_8BIT)
+ 132          // {
+ 133            void LCD_out(byte b)
+ 134            {
+ 135   1          LCD_D0 = b & 0x01;    // ---- ---x
+ 136   1          LCD_D1 = b & 0x02;    // ---- --x-
+ 137   1          LCD_D2 = b & 0x04;    // ---- -x--
+ 138   1          LCD_D3 = b & 0x08;    // ---- x---
+ 139   1          LCD_D4 = b & 0x10;    // ---x ----
+ 140   1          LCD_D5 = b & 0x20;    // --x- ----
+ 141   1          LCD_D6 = b & 0x40;    // -x-- ----
+ 142   1          LCD_D7 = b & 0x80;    // x--- ----
+ 143   1        }
+ 144            void LCD_send(byte b)
+ 145            {
+ 146   1          LCD_out(b);
+ 147   1          LCD_EN = LOW;
+ 148   1          LCD_EN = HIGH;
+ 149   1        }
+ 150            void LCD_send_cmd(byte cmd)
+ 151            {
+ 152   1          LCD_RS = LOW;   // RS LOW to send cmd
+ 153   1          LCD_send(cmd);
+ 154   1          if (cmd == LCD_CMD_CLEAR || cmd == LCD_CMD_RETURN_HOME)
+ 155   1            LCD_delay1502us();
+ 156   1          else
+ 157   1            LCD_delay37us();
+ 158   1        }
+ 159            void LCD_print_char(byte chr)
+ 160            {
+ 161   1          LCD_RS = HIGH;    // RS HIGH to send char
+ 162   1          LCD_send(chr);
+ 163   1          LCD_delay37us();
+ 164   1        }
+ 165            void LCD_print_string(byte *str)
+ 166            {
+ 167   1          unsigned int chr_idx;
+ 168   1          while (str[chr_idx] != ASCII_NULL)  // Print char untill null (\n - 0 - end of string)
+ 169   1          {
+ 170   2            LCD_print_char(str[chr_idx]);
+ 171   2            chr_idx ++;
+ 172   2          }
+ 173   1        }
+ 174            
+ 175          // }
+C51 COMPILER V9.60.0.0   LCD                                                               11/12/2023 04:32:45 PAGE 4   
 
-                  LCD_D5 = byte & 0x20;   // --x- ----
-                  LCD_D6 = byte & 0x40;   // -x-- ----
-                  LCD_D7 = byte & 0x80;   // x--- ----
-                }
-                void LCD_send(unsigned char byte)
-                {
-                  LCD_RS = LOW;
-                  LCD_out(byte);
-                  LCD_EN = LOW;
-                  LCD_EN = HIGH;
-                }
-                void LCD_send_cmd(unsigned char cmd)
-                {
-                  LCD_send(cmd);
-                  if(cmd == LCD_CLEAR || cmd == LCD_RETURN_HOME)
-                    LCD_delay_us(1502);
-                  else
-                    LCD_delay_us(37);
-                }
-              #else
+ 176          #else
+              // {
                 #error "No any LCD_SETTINGS_DISPLAY_MODE with that code, make sure using LCD_4BIT_1LINE_5x7FONT/LCD_4BIT_
              -2LINE_5x7FONT/LCD_8BIT_1LINE_5x7FONT/LCD_8BIT_2LINE_5x7FONT instead!"
+              // }
               #endif
-  71            
-  72          
-  73          
+ 181          void LCD_turn_screen(bool is_on)
+ 182          {
+ 183   1        LCD_send_cmd(is_on ? LCD_CMD_TURN_ON : LCD_CMD_TURN_OFF);
+ 184   1      }
+ 185          
+ 186          void LCD_turn_screen_on_with_cursor(bool is_blink)
+ 187          {
+ 188   1        LCD_send_cmd(is_blink ? LCD_CMD_CURSOR_ON_BLINK : LCD_CMD_CURSOR_ON);
+ 189   1      }
+ 190          
+ 191          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     24    ----
+   CODE SIZE        =    184    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----       1
+   DATA SIZE        =   ----       5
    IDATA SIZE       =   ----    ----
-   BIT SIZE         =   ----    ----
+   BIT SIZE         =   ----       2
 END OF MODULE INFORMATION.
 
 
-C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

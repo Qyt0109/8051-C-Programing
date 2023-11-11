@@ -1,0 +1,12 @@
+#ifndef SETTINGS_H
+// {
+	#define SETTINGS_H
+	
+	#define FREQ_OSC FREQ_12MHZ
+	
+	#define DELAY_MODE DELAY_USING_FOR_LOOP
+	#define LCD_SETTINGS_BIT LCD_8BIT
+	#define LCD_SETTINGS_LINE LCD_2LINE
+	#define LCD_SETTINGS_FONT LCD_5X8FONT
+// }
+#endif

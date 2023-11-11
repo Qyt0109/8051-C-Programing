@@ -4,8 +4,5 @@
 
 	#include "..\..\Libraries\Common\common.h"
 	#include "..\..\Libraries\Delay\delay.h"
-	#include "..\..\Libraries\LCD\lcd.h"
-
-	#include "port.h"
 // }
 #endif

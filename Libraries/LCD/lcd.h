@@ -1,46 +1,4 @@
-#ifndef LCD_H
-#define LCD_H
-
-//Giao tiep LCD 16x2
-/*Can khai bao cac file thu vien vao main.h
-#ifndef MAIN_H
-#define MAIN_H
-...
-#include "..\..\Libraries\LCD\lcd.h"
-...
-#endif
-*/
-
-/*
-
-LUU Y: Tao file header port.h de khai bao ket noi phan cung tuong tu theo vi du sau:
-
-#ifndef _PORT_H_
-#define _PORT_H_
-
-//Neu su dung che do giao tiep 8 bit:
-
-//sbit LCD_RS = P2^0;				//Chan RS cua LCD
-//sbit LCD_EN = P2^1;				//Chan EN cua LCD
-//#define LCD_BUS P3				//Bus truyen nhan du lieu, ma lenh cua LCD (D7-D0)
-
-//Neu su dung che do giao tiep 4 bit:
-
-//sbit LCD_RS	= P0^0;
-//sbit LCD_RW = P0^1;
-//sbit LCD_EN	= P0^2;
-//sbit LCD_D4	= P2^4;
-//sbit LCD_D5 = P2^5;
-//sbit LCD_D6 = P2^6;
-//sbit LCD_D7 = P2^7;
-
-#endif
-
-*/
-
-/*
-
-__________________________________________________________________
+/* __________________________________________________________________
 ___CAC CHAN LCD 16x2___
 
 VSS: 0V						VDD: 5V						VEE: Dieu chinh do tuong phan
@@ -129,138 +87,56 @@ VD: Xuat ky tu 'W' ra LCD tai dong 1 cot thu 7:
 Gui lenh 1000 0110 (0x86)
 Gui char 'W'
 
-_____________________________________________________________________
+_____________________________________________________________________ */
 
-___BANG MA ACSII___
 
-20	space
-21	!
-22	"
-23	#
-24	$
-25	%
-26	&
-27	'
-28	(
-29	)
-2A	*
-2B	+
-2C	,
-2D	-
-2E	.
-2F	/
-30	0
-31	1
-32	2
-33	3
-34	4
-35	5
-36	6
-37	7
-38	8
-39	9
-3A	:
-3B	;
-3C	<
-3D	=
-3E	>
-3F	?
-40	@
-41	A
-42	B
-43	C
-44	D
-45	E
-46	F
-47	G
-48	H
-49	I
-4A	J
-4B	K
-4C	L
-4D	M
-4E	N
-4F	O
-50	P
-51	Q
-52	R
-53	S
-54	T
-55	U
-56	V
-57	W
-58	X
-59	Y
-5A	Z
-5B	[
-5C	\
-5D	]
-5E	^
-5F	_
-60	`
-61	a
-62	b
-63	c
-64	d
-65	e
-66	f
-67	g
-68	h
-69	i
-6A	j
-6B	k
-6C	l
-6D	m
-6E	n
-6F	o
-70	p
-71	q
-72	r
-73	s
-74	t
-75	u
-76	v
-77	w
-78	x
-79	y
-7A	z
-7B	{
-7C	|
-7D	}
-7E	~
-________________________________________________________________________
-											
-*/
-// LCD lib settings
-#define LCD_DELAY_TIMER 0x00
-#define LCD_DELAY_FOR_LOOP 0x01
+#ifndef LCD_H
+// {
+	#define LCD_H
+	
+	// LCD lib settings
+	#define LCD_8BIT 0x00
+	#define LCD_4BIT 0x01
+	#define LCD_1LINE 0x00
+	#define LCD_2LINE 0x01
+	#define LCD_5X8FONT 0x00
+	#define LCD_5X10FONT 0x01
 
-// #define LCD_4BIT_1LINE_5x7FONT	0x20
-// #define LCD_4BIT_2LINE_5x7FONT	0x28
-// #define LCD_8BIT_1LINE_5x7FONT	0x30
-// #define LCD_8BIT_2LINE_5x7FONT	0x38
+	// LCD CMD:
 
-// LCD CMD:
-#define LCD_CLEAR								0x01  		
-#define LCD_RETURN_HOME					0x02
-#define LCD_ENTRY_MODE					0x06
-#define LCD_TURN_OFF						0x08
-#define LCD_TURN_ON							0x0C
-#define LCD_CURSOR_OFF					0x0C  
-#define LCD_UNDERLINE_ON				0x0E
-#define LCD_BLINK_CURSOR_ON			0x0F
-#define LCD_MOVE_CURSOR_LEFT		0x10
-#define LCD_MOVE_CURSOR_RIGHT		0x11
-#define LCD_SHIFT_LEFT					0x18
-#define LCD_SHIFT_RIGHT					0x1C
-#define LCD_4BIT_1LINE_5x7FONT	0x20
-#define LCD_4BIT_2LINE_5x7FONT	0x28
-#define LCD_8BIT_1LINE_5x7FONT	0x30
-#define LCD_8BIT_2LINE_5x7FONT	0x38
-#define LCD_FIRST_ROW						0x80
-#define LCD_SECOND_ROW					0xC0
+	#include "..\Common\common.h"
+	#include "..\Delay\delay.h"
+	#include "settings.h"
+	#include "ascii.h"
+	#include "port.h"
 
-void LCD_delay_us(unsigned int t_us);
-void LCD_cmd(unsigned char cmd);
+	#define LCD_CMD_CLEAR								0x01  		
+	#define LCD_CMD_RETURN_HOME					0x02
+	#define LCD_CMD_ENTRY_MODE					0x06
+	#define LCD_CMD_TURN_OFF						0x08
+	#define LCD_CMD_TURN_ON							0x0C
+	#define LCD_CMD_CURSOR_OFF					0x0C  
+	#define LCD_CMD_CURSOR_ON						0x0E
+	#define LCD_CMD_CURSOR_ON_BLINK			0x0F
+	#define LCD_CMD_MOVE_CURSOR_LEFT		0x10
+	#define LCD_CMD_MOVE_CURSOR_RIGHT		0x11
+	#define LCD_CMD_SHIFT_LEFT					0x18
+	#define LCD_CMD_SHIFT_RIGHT					0x1C
+	#define LCD_CMD_4BIT_1LINE_5x7FONT	0x20
+	#define LCD_CMD_4BIT_2LINE_5x7FONT	0x28
+	#define LCD_CMD_8BIT_1LINE_5x7FONT	0x30
+	#define LCD_CMD_8BIT_2LINE_5x7FONT	0x38
+	#define LCD_CMD_FIRST_ROW						0x80
+	#define LCD_CMD_SECOND_ROW					0xC0
 
+	void LCD_init();
+	void LCD_send_cmd(byte cmd);
+	void LCD_print_char(byte chr);
+	void LCD_print_string(byte *str);
+	void LCD_set_cursor_at(unsigned char row, unsigned char col);
+	void LCD_print_char_at(unsigned char row, unsigned char col, byte chr);
+	void LCD_print_string_at(unsigned char row, unsigned char col, byte *str);
+	void LCD_turn_screen(bool is_on);
+	void LCD_turn_screen_on_with_cursor(bool is_blink);
+// }
 #endif

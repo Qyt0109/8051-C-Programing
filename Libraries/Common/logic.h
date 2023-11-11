@@ -8,7 +8,7 @@
 	#define CLR 0
 	#define ON 1
 	#define OFF 0
-	#define bool bit
-	#define byte unsigned char
-	#define word unsigned short
+	typedef bit bool;
+	typedef unsigned char byte;
+	typedef unsigned short word;
 #endif
