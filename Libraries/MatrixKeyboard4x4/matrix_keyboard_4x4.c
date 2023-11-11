@@ -1,5 +1,6 @@
 #include "matrix_keyboard_4x4.h"
-#include "main.h"
+#include "..\Common\common.h"
+#include "port.h"
 
 char checkPressedButtonMatrixKeyboard4x4()
 {

@@ -1,13 +1,10 @@
 #include "main.h"
 
-#define LED_PORT P0
-
 #define t_ms 500
-
 
 void main()
 {
-	while(1)
+	while(TRUE)
 	{
 		unsigned char x;
 		LED_PORT = 0xAA;

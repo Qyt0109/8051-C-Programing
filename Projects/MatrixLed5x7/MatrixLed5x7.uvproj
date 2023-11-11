@@ -392,14 +392,19 @@
               <FilePath>.\port.h</FilePath>
             </File>
             <File>
-              <FileName>delay_ms.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>Z:\Users\nmhtdytgmail.com\Embedded\8051\Libraries\Delay\delay_ms.c</FilePath>
-            </File>
-            <File>
               <FileName>matrix_led_5x7.c</FileName>
               <FileType>1</FileType>
               <FilePath>Z:\Users\nmhtdytgmail.com\Embedded\8051\Libraries\MatrixLed5x7\matrix_led_5x7.c</FilePath>
+            </File>
+            <File>
+              <FileName>settings.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\settings.h</FilePath>
+            </File>
+            <File>
+              <FileName>delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>Z:\Users\nmhtdytgmail.com\Embedded\8051\Libraries\Delay\delay.c</FilePath>
             </File>
           </Files>
         </Group>

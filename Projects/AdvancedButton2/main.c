@@ -3,8 +3,7 @@
 void setup()
 {
 	// setup code here, to run once:
-	BUTTON_PIN = LOW;		// Active high button
-	LED_PIN = LOW;			// Active high led
+	
 }
 
 void loop()
@@ -25,7 +24,7 @@ void loop()
 void main()
 {
 	setup();
-	while(1)
+	while(TRUE)
 	{
 		loop();
 	}

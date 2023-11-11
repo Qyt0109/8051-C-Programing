@@ -1,0 +1,116 @@
+C51 COMPILER V9.60.0.0   DELAY                                                             11/12/2023 00:05:53 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE DELAY
+OBJECT MODULE PLACED IN .\Objects\delay.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE Z:\Users\nmhtdytgmail.com\Embedded\8051\Libraries\Delay\delay.c OPTIMIZE
+                    -(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\delay.lst) TABS(2) OBJECT(.\Objects\delay.obj)
+
+line level    source
+
+   1          #include "delay.h"
+   2          #include "settings.h"
+   3          /* Example settings.h
+   4          #ifndef SETTINGS_H
+   5          // {
+   6            #define SETTINGS_H
+   7            
+   8            ...
+   9            #define FREQ_OSC FREQ_12MHZ
+  10            #define DELAY_MODE DELAY_USING_FOR_LOOP
+  11            ...
+  12          // }
+  13          #endif
+  14          */
+  15          
+  16          // FREQ_OSC
+  17          #define FREQ_12MHZ 12000000
+  18          #define FREQ_11_0592MHZ 11059200
+  19          #define FREQ_8MHZ 8000000
+  20          
+  21          // DELAY_MODE
+  22          #define DELAY_USING_TIMER_0 0x00
+  23          #define DELAY_USING_TIMER_1 0x01
+  24          #define DELAY_USING_FOR_LOOP 0x02
+  25          
+  26          #ifndef FREQ_OSC
+              // {
+                #error "FREQ_OSC not defined!"
+              // }
+              #else
+  31          // {
+  32            #ifndef DELAY_MODE
+                // {
+                  #error "DELAY_MODE not defined!"
+                // }
+                #else
+  37            // {
+  38              #if (DELAY_MODE == DELAY_USING_FOR_LOOP)
+  39              // {
+  40                #if (FREQ_OSC == FREQ_12MHZ)
+  41                // {
+  42                  #define TIME_SCALE 123
+  43                // }
+  44                #elif (FREQ_OSC == FREQ_11_0592MHZ)
+                    // {
+                      #define TIME_SCALE 113
+                    // }
+                    #elif (FREQ_OSC == FREQ_8MHZ)
+                    // {
+                      #define TIME_SCALE 218
+                    // }
+                    #else
+                    // {
+                      #error "No delay for that FREQ_OSC"
+C51 COMPILER V9.60.0.0   DELAY                                                             11/12/2023 00:05:53 PAGE 2   
+
+                    // }
+                    #endif
+  57                
+  58                #ifdef TIME_SCALE
+  59                // {
+  60                  void delay_ms(unsigned int t_delay_ms)
+  61                  {
+  62   1                unsigned int x, y;
+  63   1                for (x = 0; x < t_delay_ms; x++)
+  64   1                {
+  65   2                  for (y = 0; y < TIME_SCALE; y++)
+  66   2                  {
+  67   3                    // Do nothing
+  68   3                  }
+  69   2                }
+  70   1              }
+  71                #endif
+  72                // }
+  73              // }
+  74              #elif (DELAY_MODE == DELAY_USING_TIMER_0)
+                  // {
+                  
+                  // }
+                  #elif (DELAY_MODE == DELAY_USING_TIMER_1)
+                  // {
+                  
+                  // }
+                  #else
+                  // {
+                    #error "Invalid DELAY_MODE!"
+                  // }
+                  #endif
+  87            // }
+  88            #endif
+  89          // }
+  90          #endif
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     32    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

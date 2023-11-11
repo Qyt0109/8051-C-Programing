@@ -237,20 +237,32 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>Z:\Users\nmhtdytgmail.com\Embedded\8051\Libraries\Delay\delay_ms.c</PathWithFileName>
-      <FilenameWithoutPath>delay_ms.c</FilenameWithoutPath>
+      <PathWithFileName>Z:\Users\nmhtdytgmail.com\Embedded\8051\Libraries\MatrixLed5x7\matrix_led_5x7.c</PathWithFileName>
+      <FilenameWithoutPath>matrix_led_5x7.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>1</GroupNumber>
       <FileNumber>5</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\settings.h</PathWithFileName>
+      <FilenameWithoutPath>settings.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>1</GroupNumber>
+      <FileNumber>6</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>Z:\Users\nmhtdytgmail.com\Embedded\8051\Libraries\MatrixLed5x7\matrix_led_5x7.c</PathWithFileName>
-      <FilenameWithoutPath>matrix_led_5x7.c</FilenameWithoutPath>
+      <PathWithFileName>Z:\Users\nmhtdytgmail.com\Embedded\8051\Libraries\Delay\delay.c</PathWithFileName>
+      <FilenameWithoutPath>delay.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

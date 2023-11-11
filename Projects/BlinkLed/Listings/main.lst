@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MAIN                                                              10/21/2023 03:01:53 PAGE 1   
+C51 COMPILER V9.60.0.0   MAIN                                                              11/11/2023 22:47:41 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
@@ -10,14 +10,14 @@ line level    source
 
    1          #include "main.h"
    2          
-   3          sbit LED_PIN = P0^0;
+   3          #define LED_DELAY 500
    4          
    5          void main()
    6          {
-   7   1        while(1)
+   7   1        while(TRUE)
    8   1        {
    9   2          LED_PIN = !LED_PIN;
-  10   2          delay_ms(500);
+  10   2          delay_ms(LED_DELAY);
   11   2        }
   12   1      }
 

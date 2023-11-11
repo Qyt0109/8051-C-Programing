@@ -1,4 +1,3 @@
-".\Objects\main.obj",
-".\Objects\delay_ms.obj" 
+".\Objects\main.obj" 
 TO ".\Objects\Button" 
 PRINT(".\Listings\Button.m51") RAMSIZE(256) 

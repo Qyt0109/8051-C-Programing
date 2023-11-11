@@ -396,11 +396,6 @@
               <FileType>1</FileType>
               <FilePath>..\..\Libraries\MatrixKeyboard4x4\matrix_keyboard_4x4.c</FilePath>
             </File>
-            <File>
-              <FileName>delay_ms.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\Libraries\Delay\delay_ms.c</FilePath>
-            </File>
           </Files>
         </Group>
       </Groups>

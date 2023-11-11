@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   MATRIX_LED_5X7                                                    11/01/2023 16:56:21 PAGE 1   
+C51 COMPILER V9.60.0.0   MATRIX_LED_5X7                                                    11/12/2023 00:20:01 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MATRIX_LED_5X7
@@ -62,7 +62,7 @@ line level    source
   47   1        
   48   1        code_index++;
   49   1        row_data = (code_index + off_set) % (5 + spacing) < 5 ? *(p_code_arr + (code_index + off_set) % (5 + spac
-C51 COMPILER V9.60.0.0   MATRIX_LED_5X7                                                    11/01/2023 16:56:21 PAGE 2   
+C51 COMPILER V9.60.0.0   MATRIX_LED_5X7                                                    11/12/2023 00:20:01 PAGE 2   
 
              -ing)) : 0x7F;
   50   1        MATRIX_LED_5X7_loadRowData(row_data);

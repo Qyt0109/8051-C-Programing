@@ -1,24 +1,28 @@
-#ifndef MATRIX_KEYBOARD_4X4_H
-#define MATRIX_KEYBOARD_4X4_H
-
 /* Example port.h
+#ifndef PORT_H
+// {
+	#define PORT_H
 
-		COL0 COL1 COL2 COL3   
-		 0		1		 2		4		ROW0
-		 5		6		 7		8		ROW0
-		 9	 10		11	 12		ROW0
-		13	 14		15	 16		ROW0
-		
-sbit MATRIX_KEYBOARD_4X4_COL_0_PIN = P1^0;
-sbit MATRIX_KEYBOARD_4X4_COL_1_PIN = P1^1;
-sbit MATRIX_KEYBOARD_4X4_COL_2_PIN = P1^2;
-sbit MATRIX_KEYBOARD_4X4_COL_3_PIN = P1^3;
-sbit MATRIX_KEYBOARD_4X4_ROW_0_PIN = P1^4;
-sbit MATRIX_KEYBOARD_4X4_ROW_1_PIN = P1^5;
-sbit MATRIX_KEYBOARD_4X4_ROW_2_PIN = P1^6;
-sbit MATRIX_KEYBOARD_4X4_ROW_3_PIN = P1^7;
+	...
+	sbit MATRIX_KEYBOARD_4X4_COL_0_PIN = P1^0;
+	sbit MATRIX_KEYBOARD_4X4_COL_1_PIN = P1^1;
+	sbit MATRIX_KEYBOARD_4X4_COL_2_PIN = P1^2;
+	sbit MATRIX_KEYBOARD_4X4_COL_3_PIN = P1^3;
+	sbit MATRIX_KEYBOARD_4X4_ROW_0_PIN = P1^4;
+	sbit MATRIX_KEYBOARD_4X4_ROW_1_PIN = P1^5;
+	sbit MATRIX_KEYBOARD_4X4_ROW_2_PIN = P1^6;
+	sbit MATRIX_KEYBOARD_4X4_ROW_3_PIN = P1^7;
+
+	#define SEVEN_SEGMENT_LED_DATA_PORT P2
+	...
+// }
+#endif
 */
 
-char checkPressedButtonMatrixKeyboard4x4();
+#ifndef MATRIX_KEYBOARD_4X4_H
+// {
+	#define MATRIX_KEYBOARD_4X4_H
 
+	char checkPressedButtonMatrixKeyboard4x4();
+// }
 #endif

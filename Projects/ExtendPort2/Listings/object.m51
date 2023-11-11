@@ -1,9 +1,9 @@
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    10/31/2023  17:55:19  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    11/12/2023  00:16:34  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
-C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\delay_ms.obj, .\Objects\ic74595.obj TO .\Objects\object PRINT 
->> (.\Listings\object.m51) RAMSIZE (256)
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\delay.obj, .\Objects\ic74595.obj TO .\Objects\object PRINT (.\
+>> Listings\object.m51) RAMSIZE (256)
 
 
 MEMORY MODEL: SMALL
@@ -11,7 +11,7 @@ MEMORY MODEL: SMALL
 
 INPUT MODULES INCLUDED:
   .\Objects\main.obj (MAIN)
-  .\Objects\delay_ms.obj (DELAY_MS)
+  .\Objects\delay.obj (DELAY)
   .\Objects\ic74595.obj (IC74595)
   C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
   C:\KEIL_V5\C51\LIB\C51S.LIB (?C?CLDOPTR)
@@ -37,11 +37,11 @@ LINK MAP OF MODULE:  .\Objects\object (MAIN)
             CODE    00BBH     005BH     UNIT         ?PR?_IC74595_PUSHBYTES?IC74595
             CODE    0116H     004BH     UNIT         ?PR?LOOP?MAIN
             CODE    0161H     0036H     UNIT         ?PR?_IC74595_PUSHBYTE?IC74595
-            CODE    0197H     0020H     UNIT         ?CO?MAIN
-            CODE    01B7H     0020H     UNIT         ?PR?_DELAY_MS?DELAY_MS
-            CODE    01D7H     000CH     UNIT         ?C_C51STARTUP
-            CODE    01E3H     0008H     UNIT         ?PR?MAIN?MAIN
-            CODE    01EBH     0001H     UNIT         ?PR?SETUP?MAIN
+            CODE    0197H     0020H     UNIT         ?PR?_DELAY_MS?DELAY
+            CODE    01B7H     0010H     UNIT         ?CO?MAIN
+            CODE    01C7H     000CH     UNIT         ?C_C51STARTUP
+            CODE    01D3H     0008H     UNIT         ?PR?MAIN?MAIN
+            CODE    01DBH     0001H     UNIT         ?PR?SETUP?MAIN
 
 
 
@@ -59,12 +59,12 @@ SEGMENT                                  DATA_GROUP
   +--> ?PR?LOOP?MAIN
 
 ?PR?LOOP?MAIN                          0008H    0003H
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  10/31/2023  17:55:19  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/12/2023  00:16:34  PAGE 2
 
 
   +--> ?CO?MAIN
   +--> ?PR?_IC74595_PUSHBYTES?IC74595
-  +--> ?PR?_DELAY_MS?DELAY_MS
+  +--> ?PR?_DELAY_MS?DELAY
 
 ?PR?_IC74595_PUSHBYTES?IC74595         000BH    0007H
 
@@ -79,66 +79,64 @@ SYMBOL TABLE OF MODULE:  .\Objects\object (MAIN)
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:00A0H         PUBLIC        P2
   D:0012H         PUBLIC        code_index
-  C:01E3H         PUBLIC        main
-  C:01EBH         PUBLIC        setup
+  C:01D3H         PUBLIC        main
+  C:01DBH         PUBLIC        setup
   C:0116H         PUBLIC        loop
-  C:0197H         PUBLIC        SEVEN_SEGMENT_LED_ANODE_CODES
-  C:01A7H         PUBLIC        SEVEN_SEGMENT_LED_CATHODE_CODES
+  C:01B7H         PUBLIC        SEVEN_SEGMENT_LED_ANODE_CODES
   -------         PROC          SETUP
-  C:01EBH         LINE#         6
-  C:01EBH         LINE#         7
-  C:01EBH         LINE#         10
+  C:01DBH         LINE#         5
+  C:01DBH         LINE#         6
+  C:01DBH         LINE#         9
   -------         ENDPROC       SETUP
   -------         PROC          LOOP
   -------         DO            
   D:0008H         SYMBOL        bytes_arr
   D:0003H         SYMBOL        byte_index
   -------         ENDDO         
+  C:0116H         LINE#         13
   C:0116H         LINE#         14
-  C:0116H         LINE#         15
-  C:0116H         LINE#         19
+  C:0116H         LINE#         18
+  C:0125H         LINE#         19
   C:0125H         LINE#         20
-  C:0125H         LINE#         21
-  C:0146H         LINE#         22
-  C:0149H         LINE#         23
-  C:014FH         LINE#         25
-  C:015AH         LINE#         26
+  C:0146H         LINE#         21
+  C:0149H         LINE#         22
+  C:014FH         LINE#         24
+  C:015AH         LINE#         25
   -------         ENDPROC       LOOP
   -------         PROC          MAIN
-  C:01E3H         LINE#         29
-  C:01E3H         LINE#         30
-  C:01E3H         LINE#         31
-  C:01E6H         LINE#         32
-  C:01E6H         LINE#         33
-  C:01E6H         LINE#         34
-  C:01E9H         LINE#         35
+  C:01D3H         LINE#         28
+  C:01D3H         LINE#         29
+  C:01D3H         LINE#         30
+  C:01D6H         LINE#         31
+  C:01D6H         LINE#         32
+  C:01D6H         LINE#         33
+  C:01D9H         LINE#         34
   -------         ENDPROC       MAIN
   -------         ENDMOD        MAIN
 
-  -------         MODULE        DELAY_MS
+  -------         MODULE        DELAY
   C:0000H         SYMBOL        _ICE_DUMMY_
-  D:00A0H         PUBLIC        P2
-  C:01B7H         PUBLIC        _delay_ms
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  10/31/2023  17:55:19  PAGE 3
-
-
+  C:0197H         PUBLIC        _delay_ms
   -------         PROC          _DELAY_MS
   D:0006H         SYMBOL        t_delay_ms
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/12/2023  00:16:34  PAGE 3
+
+
   -------         DO            
-  D:0004H         SYMBOL        i_x
+  D:0004H         SYMBOL        x
   D:0002H         SYMBOL        y
   -------         ENDDO         
-  C:01B7H         LINE#         14
-  C:01B7H         LINE#         15
-  C:01B7H         LINE#         17
-  C:01C1H         LINE#         18
-  C:01C1H         LINE#         19
-  C:01C4H         LINE#         20
-  C:01C4H         LINE#         22
-  C:01CFH         LINE#         23
-  C:01D6H         LINE#         24
+  C:0197H         LINE#         60
+  C:0197H         LINE#         61
+  C:0197H         LINE#         63
+  C:01A1H         LINE#         64
+  C:01A1H         LINE#         65
+  C:01A4H         LINE#         66
+  C:01A4H         LINE#         68
+  C:01AFH         LINE#         69
+  C:01B6H         LINE#         70
   -------         ENDPROC       _DELAY_MS
-  -------         ENDMOD        DELAY_MS
+  -------         ENDMOD        DELAY
 
   -------         MODULE        IC74595
   C:0000H         SYMBOL        _ICE_DUMMY_
@@ -153,17 +151,17 @@ SYMBOL TABLE OF MODULE:  .\Objects\object (MAIN)
   -------         DO            
   D:0003H         SYMBOL        bit_index
   -------         ENDDO         
-  C:0161H         LINE#         4
-  C:0163H         LINE#         5
-  C:0163H         LINE#         7
-  C:016FH         LINE#         8
+  C:0161H         LINE#         5
+  C:0163H         LINE#         6
+  C:0163H         LINE#         8
   C:016FH         LINE#         9
-  C:018BH         LINE#         10
-  C:018DH         LINE#         11
-  C:018FH         LINE#         12
-  C:0192H         LINE#         13
-  C:0194H         LINE#         14
-  C:0196H         LINE#         15
+  C:016FH         LINE#         10
+  C:018BH         LINE#         11
+  C:018DH         LINE#         12
+  C:018FH         LINE#         13
+  C:0192H         LINE#         14
+  C:0194H         LINE#         15
+  C:0196H         LINE#         16
   -------         ENDPROC       _IC74595_PUSHBYTE
   -------         PROC          _IC74595_PUSHBYTES
   D:000BH         SYMBOL        p_bytes_arr
@@ -175,24 +173,24 @@ SYMBOL TABLE OF MODULE:  .\Objects\object (MAIN)
   D:0011H         SYMBOL        bit_index
   -------         ENDDO         
   -------         ENDDO         
-  C:00BBH         LINE#         17
-  C:00C3H         LINE#         18
-  C:00C3H         LINE#         20
-  C:00CDH         LINE#         21
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  10/31/2023  17:55:19  PAGE 4
-
-
+  C:00BBH         LINE#         18
+  C:00C3H         LINE#         19
+  C:00C3H         LINE#         21
   C:00CDH         LINE#         22
-  C:00DEH         LINE#         24
-  C:00ECH         LINE#         25
+  C:00CDH         LINE#         23
+  C:00DEH         LINE#         25
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/12/2023  00:16:34  PAGE 4
+
+
   C:00ECH         LINE#         26
-  C:0105H         LINE#         27
-  C:0107H         LINE#         28
-  C:0109H         LINE#         29
-  C:010DH         LINE#         30
-  C:0111H         LINE#         31
-  C:0113H         LINE#         32
-  C:0115H         LINE#         33
+  C:00ECH         LINE#         27
+  C:0105H         LINE#         28
+  C:0107H         LINE#         29
+  C:0109H         LINE#         30
+  C:010DH         LINE#         31
+  C:0111H         LINE#         32
+  C:0113H         LINE#         33
+  C:0115H         LINE#         34
   -------         ENDPROC       _IC74595_PUSHBYTES
   -------         ENDMOD        IC74595
 
@@ -211,5 +209,5 @@ SYMBOL TABLE OF MODULE:  .\Objects\object (MAIN)
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_IC74595_PUSHBYTE?IC74595
 
-Program Size: data=20.0 xdata=0 code=492
+Program Size: data=20.0 xdata=0 code=476
 LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)

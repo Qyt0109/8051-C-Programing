@@ -1,12 +1,12 @@
 #include "main.h"
 
-sbit LED_PIN = P0^0;
+#define LED_DELAY 500
 
 void main()
 {
-	while(1)
+	while(TRUE)
 	{
 		LED_PIN = !LED_PIN;
-		delay_ms(500);
+		delay_ms(LED_DELAY);
 	}
 }

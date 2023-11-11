@@ -1,9 +1,9 @@
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    11/01/2023  16:56:21  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    11/12/2023  00:20:01  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
-C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\delay_ms.obj, .\Objects\matrix_led_5x7.obj TO .\Objects\object
->>  PRINT (.\Listings\object.m51) RAMSIZE (256)
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\matrix_led_5x7.obj, .\Objects\delay.obj TO .\Objects\object PR
+>> INT (.\Listings\object.m51) RAMSIZE (256)
 
 
 MEMORY MODEL: SMALL
@@ -11,13 +11,12 @@ MEMORY MODEL: SMALL
 
 INPUT MODULES INCLUDED:
   .\Objects\main.obj (MAIN)
-  .\Objects\delay_ms.obj (DELAY_MS)
   .\Objects\matrix_led_5x7.obj (MATRIX_LED_5X7)
+  .\Objects\delay.obj (DELAY)
   C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
   C:\KEIL_V5\C51\LIB\C51S.LIB (?C?CLDOPTR)
   C:\KEIL_V5\C51\LIB\C51S.LIB (?C?UIDIV)
   C:\KEIL_V5\C51\LIB\C51S.LIB (?C?SIDIV)
-  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
 
 
 LINK MAP OF MODULE:  .\Objects\object (MAIN)
@@ -32,21 +31,20 @@ LINK MAP OF MODULE:  .\Objects\object (MAIN)
                     0013H     000DH                  *** GAP ***
             BIT     0020H.0   0000H.1   UNIT         ?BI?MAIN
                     0020H.1   0000H.7                *** GAP ***
-            DATA    0021H     0050H     UNIT         ?DT?MAIN
-            IDATA   0071H     0001H     UNIT         ?STACK
+            IDATA   0021H     0001H     UNIT         ?STACK
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
             CODE    0003H     01ACH     UNIT         ?PR?_MATRIX_LED_5X7_FASTDISPLAY?MATRIX_LED_5X7
             CODE    01AFH     00B8H     UNIT         ?C?LIB_CODE
-            CODE    0267H     0097H     UNIT         ?PR?LOOP?MAIN
-            CODE    02FEH     008CH     UNIT         ?C_C51STARTUP
-            CODE    038AH     0054H     UNIT         ?C_INITSEG
-            CODE    03DEH     0020H     UNIT         ?PR?_DELAY_MS?DELAY_MS
-            CODE    03FEH     001EH     UNIT         ?PR?_MATRIX_LED_5X7_LOADROWDATA?MATRIX_LED_5X7
-            CODE    041CH     0012H     UNIT         ?PR?CHECKSWITCHMODEBUTTONTOTOGGLEMODE?MAIN
-            CODE    042EH     0008H     UNIT         ?PR?MAIN?MAIN
-            CODE    0436H     0001H     UNIT         ?PR?SETUP?MAIN
+            CODE    0267H     00A0H     UNIT         ?PR?LOOP?MAIN
+            CODE    0307H     0050H     UNIT         ?CO?MAIN
+            CODE    0357H     0020H     UNIT         ?PR?_DELAY_MS?DELAY
+            CODE    0377H     001EH     UNIT         ?PR?_MATRIX_LED_5X7_LOADROWDATA?MATRIX_LED_5X7
+            CODE    0395H     0012H     UNIT         ?PR?CHECKSWITCHMODEBUTTONTOTOGGLEMODE?MAIN
+            CODE    03A7H     000CH     UNIT         ?C_C51STARTUP
+            CODE    03B3H     0008H     UNIT         ?PR?MAIN?MAIN
+            CODE    03BBH     0001H     UNIT         ?PR?SETUP?MAIN
 
 
 
@@ -58,25 +56,25 @@ SEGMENT                                            DATA_GROUP
 ----------------------------------------------------------------
 ?C_C51STARTUP                                    -----    -----
   +--> ?PR?MAIN?MAIN
-  +--> ?C_INITSEG
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/01/2023  16:56:21  PAGE 2
-
-
 
 ?PR?MAIN?MAIN                                    -----    -----
   +--> ?PR?SETUP?MAIN
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/12/2023  00:20:01  PAGE 2
+
+
   +--> ?PR?LOOP?MAIN
 
 ?PR?LOOP?MAIN                                    0008H    0004H
+  +--> ?CO?MAIN
   +--> ?PR?_MATRIX_LED_5X7_FASTDISPLAY?MATRI...
   +--> ?PR?CHECKSWITCHMODEBUTTONTOTOGGLEMODE...
 
 ?PR?_MATRIX_LED_5X7_FASTDISPLAY?MATRI...         000CH    0007H
   +--> ?PR?_MATRIX_LED_5X7_LOADROWDATA?MATRI...
-  +--> ?PR?_DELAY_MS?DELAY_MS
+  +--> ?PR?_DELAY_MS?DELAY
 
 ?PR?CHECKSWITCHMODEBUTTONTOTOGGLEMODE...         -----    -----
-  +--> ?PR?_DELAY_MS?DELAY_MS
+  +--> ?PR?_DELAY_MS?DELAY
 
 
 
@@ -90,40 +88,40 @@ SYMBOL TABLE OF MODULE:  .\Objects\object (MAIN)
   D:0090H         PUBLIC        P1
   D:00A0H         PUBLIC        P2
   D:00B0H         PUBLIC        P3
-  D:0021H         PUBLIC        MATRIX_LED_5X7_CODES
+  C:0307H         PUBLIC        MATRIX_LED_5X7_CODES
   B:0090H.0       PUBLIC        SWITCH_MODE_BUTTON
-  C:042EH         PUBLIC        main
+  C:03B3H         PUBLIC        main
   B:0020H.0       PUBLIC        mode
-  C:041CH         PUBLIC        checkSwitchModeButtonToToggleMode
-  C:0436H         PUBLIC        setup
+  C:0395H         PUBLIC        checkSwitchModeButtonToToggleMode
+  C:03BBH         PUBLIC        setup
   C:0267H         PUBLIC        loop
   -------         PROC          SETUP
-  C:0436H         LINE#         20
-  C:0436H         LINE#         21
-  C:0436H         LINE#         23
+  C:03BBH         LINE#         20
+  C:03BBH         LINE#         21
+  C:03BBH         LINE#         23
   -------         ENDPROC       SETUP
   -------         PROC          CHECKSWITCHMODEBUTTONTOTOGGLEMODE
-  C:041CH         LINE#         36
-  C:041CH         LINE#         37
-  C:041CH         LINE#         38
-  C:041EH         LINE#         39
-  C:0421H         LINE#         40
-  C:0421H         LINE#         41
-  C:0428H         LINE#         42
-  C:042AH         LINE#         43
-  C:042DH         LINE#         44
-  C:042DH         LINE#         46
-  C:042DH         LINE#         47
-  C:042DH         LINE#         48
+  C:0395H         LINE#         36
+  C:0395H         LINE#         37
+  C:0395H         LINE#         38
+  C:0397H         LINE#         39
+  C:039AH         LINE#         40
+  C:039AH         LINE#         41
+  C:03A1H         LINE#         42
+  C:03A3H         LINE#         43
+  C:03A6H         LINE#         44
+  C:03A6H         LINE#         46
+  C:03A6H         LINE#         47
+  C:03A6H         LINE#         48
   -------         ENDPROC       CHECKSWITCHMODEBUTTONTOTOGGLEMODE
   -------         PROC          LOOP
   -------         DO            
   D:0008H         SYMBOL        code_index
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/01/2023  16:56:21  PAGE 3
-
-
   D:0009H         SYMBOL        number_of_codes
   -------         DO            
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/12/2023  00:20:01  PAGE 3
+
+
   D:000AH         SYMBOL        off_set
   D:000AH         SYMBOL        x
   -------         DO            
@@ -146,70 +144,46 @@ SYMBOL TABLE OF MODULE:  .\Objects\object (MAIN)
   C:0288H         LINE#         64
   C:0296H         LINE#         65
   C:0296H         LINE#         66
-  C:02AAH         LINE#         67
-  C:02ADH         LINE#         68
-  C:02B0H         LINE#         69
-  C:02B0H         LINE#         70
-  C:02B4H         LINE#         71
-  C:02B7H         LINE#         72
-  C:02B7H         LINE#         73
-  C:02BBH         LINE#         74
-  C:02BEH         LINE#         75
-  C:02BEH         LINE#         76
-  C:02C2H         LINE#         77
-  C:02C2H         LINE#         79
-  C:02C2H         LINE#         81
-  C:02CCH         LINE#         82
-  C:02CCH         LINE#         84
-  C:02DAH         LINE#         85
-  C:02DAH         LINE#         86
-  C:02ECH         LINE#         87
-  C:02EFH         LINE#         88
-  C:02F2H         LINE#         89
-  C:02F2H         LINE#         90
-  C:02F6H         LINE#         91
-  C:02F9H         LINE#         92
-  C:02F9H         LINE#         93
-  C:02FDH         LINE#         94
-  C:02FDH         LINE#         95
+  C:02AEH         LINE#         67
+  C:02B1H         LINE#         68
+  C:02B4H         LINE#         69
+  C:02B4H         LINE#         70
+  C:02B8H         LINE#         71
+  C:02BBH         LINE#         72
+  C:02BBH         LINE#         73
+  C:02BFH         LINE#         74
+  C:02C2H         LINE#         75
+  C:02C2H         LINE#         76
+  C:02C6H         LINE#         77
+  C:02C6H         LINE#         79
+  C:02C6H         LINE#         81
+  C:02D0H         LINE#         82
+  C:02D0H         LINE#         84
+  C:02DEH         LINE#         85
+  C:02DEH         LINE#         86
+  C:02F5H         LINE#         87
+  C:02F8H         LINE#         88
+  C:02FBH         LINE#         89
+  C:02FBH         LINE#         90
+  C:02FFH         LINE#         91
+  C:0302H         LINE#         92
+  C:0302H         LINE#         93
+  C:0306H         LINE#         94
+  C:0306H         LINE#         95
   -------         ENDPROC       LOOP
   -------         PROC          MAIN
-  C:042EH         LINE#         97
-  C:042EH         LINE#         98
-  C:042EH         LINE#         99
-  C:0431H         LINE#         100
-  C:0431H         LINE#         101
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/01/2023  16:56:21  PAGE 4
+  C:03B3H         LINE#         97
+  C:03B3H         LINE#         98
+  C:03B3H         LINE#         99
+  C:03B6H         LINE#         100
+  C:03B6H         LINE#         101
+  C:03B6H         LINE#         102
+  C:03B9H         LINE#         103
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/12/2023  00:20:01  PAGE 4
 
 
-  C:0431H         LINE#         102
-  C:0434H         LINE#         103
   -------         ENDPROC       MAIN
   -------         ENDMOD        MAIN
-
-  -------         MODULE        DELAY_MS
-  C:0000H         SYMBOL        _ICE_DUMMY_
-  D:0090H         PUBLIC        P1
-  D:00A0H         PUBLIC        P2
-  D:00B0H         PUBLIC        P3
-  C:03DEH         PUBLIC        _delay_ms
-  -------         PROC          _DELAY_MS
-  D:0006H         SYMBOL        t_delay_ms
-  -------         DO            
-  D:0004H         SYMBOL        i_x
-  D:0002H         SYMBOL        y
-  -------         ENDDO         
-  C:03DEH         LINE#         14
-  C:03DEH         LINE#         15
-  C:03DEH         LINE#         17
-  C:03E8H         LINE#         18
-  C:03E8H         LINE#         19
-  C:03EBH         LINE#         20
-  C:03EBH         LINE#         22
-  C:03F6H         LINE#         23
-  C:03FDH         LINE#         24
-  -------         ENDPROC       _DELAY_MS
-  -------         ENDMOD        DELAY_MS
 
   -------         MODULE        MATRIX_LED_5X7
   C:0000H         SYMBOL        _ICE_DUMMY_
@@ -229,22 +203,19 @@ SYMBOL TABLE OF MODULE:  .\Objects\object (MAIN)
   B:00B0H.4       PUBLIC        MATRIX_LED_5X7_ROW_4
   B:00B0H.5       PUBLIC        MATRIX_LED_5X7_ROW_5
   B:00B0H.6       PUBLIC        MATRIX_LED_5X7_ROW_6
-  C:03FEH         PUBLIC        _MATRIX_LED_5X7_loadRowData
+  C:0377H         PUBLIC        _MATRIX_LED_5X7_loadRowData
   -------         PROC          _MATRIX_LED_5X7_LOADROWDATA
   D:0007H         SYMBOL        row_data
-  C:03FEH         LINE#         4
-  C:03FEH         LINE#         5
-  C:03FEH         LINE#         6
-  C:0402H         LINE#         7
-  C:0407H         LINE#         8
-  C:040BH         LINE#         9
-  C:040FH         LINE#         10
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/01/2023  16:56:21  PAGE 5
-
-
-  C:0413H         LINE#         11
-  C:0417H         LINE#         12
-  C:041BH         LINE#         13
+  C:0377H         LINE#         4
+  C:0377H         LINE#         5
+  C:0377H         LINE#         6
+  C:037BH         LINE#         7
+  C:0380H         LINE#         8
+  C:0384H         LINE#         9
+  C:0388H         LINE#         10
+  C:038CH         LINE#         11
+  C:0390H         LINE#         12
+  C:0394H         LINE#         13
   -------         ENDPROC       _MATRIX_LED_5X7_LOADROWDATA
   -------         PROC          _MATRIX_LED_5X7_FASTDISPLAY
   D:000CH         SYMBOL        p_code_arr
@@ -268,6 +239,9 @@ SYMBOL TABLE OF MODULE:  .\Objects\object (MAIN)
   C:00A7H         LINE#         30
   C:00A9H         LINE#         31
   C:00B0H         LINE#         32
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/12/2023  00:20:01  PAGE 5
+
+
   C:00B2H         LINE#         34
   C:00B4H         LINE#         35
   C:00F8H         LINE#         36
@@ -290,6 +264,27 @@ SYMBOL TABLE OF MODULE:  .\Objects\object (MAIN)
   -------         ENDPROC       _MATRIX_LED_5X7_FASTDISPLAY
   -------         ENDMOD        MATRIX_LED_5X7
 
+  -------         MODULE        DELAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0357H         PUBLIC        _delay_ms
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        t_delay_ms
+  -------         DO            
+  D:0004H         SYMBOL        x
+  D:0002H         SYMBOL        y
+  -------         ENDDO         
+  C:0357H         LINE#         60
+  C:0357H         LINE#         61
+  C:0357H         LINE#         63
+  C:0361H         LINE#         64
+  C:0361H         LINE#         65
+  C:0364H         LINE#         66
+  C:0364H         LINE#         68
+  C:036FH         LINE#         69
+  C:0376H         LINE#         70
+  -------         ENDPROC       _DELAY_MS
+  -------         ENDMOD        DELAY
+
   -------         MODULE        ?C?CLDOPTR
   C:01AFH         PUBLIC        ?C?CLDOPTR
   -------         ENDMOD        ?C?CLDOPTR
@@ -299,11 +294,8 @@ SYMBOL TABLE OF MODULE:  .\Objects\object (MAIN)
   -------         ENDMOD        ?C?UIDIV
 
   -------         MODULE        ?C?SIDIV
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/01/2023  16:56:21  PAGE 6
-
-
   C:0231H         PUBLIC        ?C?SIDIV
   -------         ENDMOD        ?C?SIDIV
 
-Program Size: data=100.1 xdata=0 code=1079
+Program Size: data=20.1 xdata=0 code=956
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

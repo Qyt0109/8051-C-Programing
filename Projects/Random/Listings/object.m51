@@ -1,0 +1,130 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    11/12/2023  00:23:14  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj TO .\Objects\object PRINT (.\Listings\object.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\object (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         _DATA_GROUP_
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0012H     UNIT         ?PR?CHECKBUTTONTORANDOMVALUE?MAIN
+            CODE    0015H     0010H     UNIT         ?CO?MAIN
+            CODE    0025H     000EH     UNIT         ?PR?_DISPLAYRANDOMVALUETO7SEGMENTLED?MAIN
+            CODE    0033H     000CH     UNIT         ?C_C51STARTUP
+            CODE    003FH     0008H     UNIT         ?PR?MAIN?MAIN
+            CODE    0047H     0003H     UNIT         ?PR?LOOP?MAIN
+            CODE    004AH     0001H     UNIT         ?PR?SETUP?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\object (MAIN)
+
+
+SEGMENT                                            DATA_GROUP 
+  +--> CALLED SEGMENT                            START    LENGTH
+----------------------------------------------------------------
+?C_C51STARTUP                                    -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                                    -----    -----
+  +--> ?PR?SETUP?MAIN
+  +--> ?PR?LOOP?MAIN
+
+?PR?LOOP?MAIN                                    -----    -----
+  +--> ?PR?CHECKBUTTONTORANDOMVALUE?MAIN
+
+?PR?CHECKBUTTONTORANDOMVALUE?MAIN                0008H    0001H
+  +--> ?PR?_DISPLAYRANDOMVALUETO7SEGMENTLED?...
+
+?PR?_DISPLAYRANDOMVALUETO7SEGMENTLED?...         -----    -----
+  +--> ?CO?MAIN
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/12/2023  00:23:14  PAGE 2
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\object (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00B0H         PUBLIC        P3
+  C:003FH         PUBLIC        main
+  B:00B0H.7       PUBLIC        BUTTON_PIN
+  C:0003H         PUBLIC        checkButtonToRandomValue
+  C:004AH         PUBLIC        setup
+  C:0047H         PUBLIC        loop
+  C:0015H         PUBLIC        SEVEN_SEGMENT_LED_ANODE_CODES
+  C:0025H         PUBLIC        _displayRandomValueTo7SegmentLed
+  -------         PROC          SETUP
+  C:004AH         LINE#         5
+  C:004AH         LINE#         6
+  C:004AH         LINE#         8
+  -------         ENDPROC       SETUP
+  -------         PROC          _DISPLAYRANDOMVALUETO7SEGMENTLED
+  D:0007H         SYMBOL        value
+  C:0025H         LINE#         10
+  C:0025H         LINE#         11
+  C:0025H         LINE#         12
+  C:0032H         LINE#         13
+  -------         ENDPROC       _DISPLAYRANDOMVALUETO7SEGMENTLED
+  -------         PROC          CHECKBUTTONTORANDOMVALUE
+  -------         DO            
+  D:0008H         SYMBOL        random_value
+  -------         ENDDO         
+  C:0003H         LINE#         15
+  C:0003H         LINE#         16
+  C:0003H         LINE#         18
+  C:0005H         LINE#         19
+  C:0008H         LINE#         20
+  C:0008H         LINE#         21
+  C:000BH         LINE#         22
+  C:000BH         LINE#         24
+  C:000DH         LINE#         25
+  C:000FH         LINE#         26
+  C:0014H         LINE#         27
+  C:0014H         LINE#         28
+  -------         ENDPROC       CHECKBUTTONTORANDOMVALUE
+  -------         PROC          LOOP
+  C:0047H         LINE#         30
+  C:0047H         LINE#         31
+  C:0047H         LINE#         33
+  -------         ENDPROC       LOOP
+  -------         PROC          MAIN
+  C:003FH         LINE#         36
+  C:003FH         LINE#         37
+  C:003FH         LINE#         38
+  C:0042H         LINE#         39
+  C:0042H         LINE#         40
+  C:0042H         LINE#         41
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/12/2023  00:23:14  PAGE 3
+
+
+  C:0045H         LINE#         42
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+Program Size: data=10.0 xdata=0 code=75
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

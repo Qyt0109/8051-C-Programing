@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    10/30/2023  19:06:27  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    11/11/2023  23:55:33  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
@@ -29,11 +29,11 @@ LINK MAP OF MODULE:  .\Objects\object (MAIN)
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
             CODE    0003H     0063H     UNIT         ?PR?CHECKPRESSEDBUTTONMATRIXKEYBOARD4X4?MATRIX_KEYBOARD_4X4
-            CODE    0066H     0020H     UNIT         ?CO?MAIN
-            CODE    0086H     001CH     UNIT         ?PR?LOOP?MAIN
-            CODE    00A2H     000CH     UNIT         ?C_C51STARTUP
-            CODE    00AEH     0008H     UNIT         ?PR?MAIN?MAIN
-            CODE    00B6H     0001H     UNIT         ?PR?SETUP?MAIN
+            CODE    0066H     001CH     UNIT         ?PR?LOOP?MAIN
+            CODE    0082H     0010H     UNIT         ?CO?MAIN
+            CODE    0092H     000CH     UNIT         ?C_C51STARTUP
+            CODE    009EH     0008H     UNIT         ?PR?MAIN?MAIN
+            CODE    00A6H     0001H     UNIT         ?PR?SETUP?MAIN
 
 
 
@@ -59,7 +59,7 @@ SEGMENT
 SYMBOL TABLE OF MODULE:  .\Objects\object (MAIN)
 
   VALUE           TYPE          NAME
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  10/30/2023  19:06:27  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/11/2023  23:55:33  PAGE 2
 
 
   ----------------------------------
@@ -69,36 +69,35 @@ SYMBOL TABLE OF MODULE:  .\Objects\object (MAIN)
   D:0090H         PUBLIC        P1
   D:00A0H         PUBLIC        P2
   D:0008H         PUBLIC        display_key
-  C:00AEH         PUBLIC        main
-  C:00B6H         PUBLIC        setup
-  C:0086H         PUBLIC        loop
-  C:0066H         PUBLIC        SEVEN_SEGMENT_LED_ANODE_CODES
-  C:0076H         PUBLIC        SEVEN_SEGMENT_LED_CATHODE_CODES
+  C:009EH         PUBLIC        main
+  C:00A6H         PUBLIC        setup
+  C:0066H         PUBLIC        loop
+  C:0082H         PUBLIC        SEVEN_SEGMENT_LED_ANODE_CODES
   -------         PROC          SETUP
-  C:00B6H         LINE#         13
-  C:00B6H         LINE#         14
-  C:00B6H         LINE#         16
+  C:00A6H         LINE#         12
+  C:00A6H         LINE#         13
+  C:00A6H         LINE#         15
   -------         ENDPROC       SETUP
   -------         PROC          LOOP
   -------         DO            
   D:0007H         SYMBOL        key_pressed
   -------         ENDDO         
-  C:0086H         LINE#         21
-  C:0086H         LINE#         22
-  C:0086H         LINE#         24
-  C:0089H         LINE#         25
-  C:0097H         LINE#         26
-  C:0099H         LINE#         27
-  C:00A1H         LINE#         28
+  C:0066H         LINE#         20
+  C:0066H         LINE#         21
+  C:0066H         LINE#         23
+  C:0069H         LINE#         24
+  C:0077H         LINE#         25
+  C:0079H         LINE#         26
+  C:0081H         LINE#         27
   -------         ENDPROC       LOOP
   -------         PROC          MAIN
-  C:00AEH         LINE#         30
-  C:00AEH         LINE#         31
-  C:00AEH         LINE#         32
-  C:00B1H         LINE#         33
-  C:00B1H         LINE#         34
-  C:00B1H         LINE#         35
-  C:00B4H         LINE#         36
+  C:009EH         LINE#         29
+  C:009EH         LINE#         30
+  C:009EH         LINE#         31
+  C:00A1H         LINE#         32
+  C:00A1H         LINE#         33
+  C:00A1H         LINE#         34
+  C:00A4H         LINE#         35
   -------         ENDPROC       MAIN
   -------         ENDMOD        MAIN
 
@@ -118,56 +117,56 @@ SYMBOL TABLE OF MODULE:  .\Objects\object (MAIN)
   -------         DO            
   D:0007H         SYMBOL        key
   -------         ENDDO         
-  C:0003H         LINE#         4
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  10/30/2023  19:06:27  PAGE 3
-
-
   C:0003H         LINE#         5
   C:0003H         LINE#         6
-  C:0005H         LINE#         8
-  C:0007H         LINE#         9
-  C:000AH         LINE#         10
-  C:000CH         LINE#         11
-  C:000FH         LINE#         12
-  C:0011H         LINE#         13
-  C:0014H         LINE#         14
-  C:0016H         LINE#         15
-  C:0019H         LINE#         16
-  C:001BH         LINE#         17
-  C:001DH         LINE#         19
-  C:001FH         LINE#         20
-  C:0022H         LINE#         21
-  C:0024H         LINE#         22
-  C:0027H         LINE#         23
-  C:0029H         LINE#         24
-  C:002CH         LINE#         25
-  C:002EH         LINE#         26
-  C:0031H         LINE#         27
-  C:0033H         LINE#         28
-  C:0035H         LINE#         30
-  C:0037H         LINE#         31
-  C:003AH         LINE#         32
-  C:003CH         LINE#         33
-  C:003FH         LINE#         34
-  C:0041H         LINE#         35
-  C:0044H         LINE#         36
-  C:0046H         LINE#         37
-  C:0049H         LINE#         38
-  C:004BH         LINE#         39
-  C:004DH         LINE#         41
-  C:004FH         LINE#         42
-  C:0052H         LINE#         43
-  C:0054H         LINE#         44
-  C:0057H         LINE#         45
-  C:0059H         LINE#         46
-  C:005CH         LINE#         47
-  C:005EH         LINE#         48
-  C:0061H         LINE#         49
-  C:0063H         LINE#         50
-  C:0065H         LINE#         52
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/11/2023  23:55:33  PAGE 3
+
+
+  C:0003H         LINE#         7
+  C:0005H         LINE#         9
+  C:0007H         LINE#         10
+  C:000AH         LINE#         11
+  C:000CH         LINE#         12
+  C:000FH         LINE#         13
+  C:0011H         LINE#         14
+  C:0014H         LINE#         15
+  C:0016H         LINE#         16
+  C:0019H         LINE#         17
+  C:001BH         LINE#         18
+  C:001DH         LINE#         20
+  C:001FH         LINE#         21
+  C:0022H         LINE#         22
+  C:0024H         LINE#         23
+  C:0027H         LINE#         24
+  C:0029H         LINE#         25
+  C:002CH         LINE#         26
+  C:002EH         LINE#         27
+  C:0031H         LINE#         28
+  C:0033H         LINE#         29
+  C:0035H         LINE#         31
+  C:0037H         LINE#         32
+  C:003AH         LINE#         33
+  C:003CH         LINE#         34
+  C:003FH         LINE#         35
+  C:0041H         LINE#         36
+  C:0044H         LINE#         37
+  C:0046H         LINE#         38
+  C:0049H         LINE#         39
+  C:004BH         LINE#         40
+  C:004DH         LINE#         42
+  C:004FH         LINE#         43
+  C:0052H         LINE#         44
+  C:0054H         LINE#         45
+  C:0057H         LINE#         46
+  C:0059H         LINE#         47
+  C:005CH         LINE#         48
+  C:005EH         LINE#         49
+  C:0061H         LINE#         50
+  C:0063H         LINE#         51
   C:0065H         LINE#         53
+  C:0065H         LINE#         54
   -------         ENDPROC       CHECKPRESSEDBUTTONMATRIXKEYBOARD4X4
   -------         ENDMOD        MATRIX_KEYBOARD_4X4
 
-Program Size: data=10.0 xdata=0 code=183
+Program Size: data=10.0 xdata=0 code=167
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

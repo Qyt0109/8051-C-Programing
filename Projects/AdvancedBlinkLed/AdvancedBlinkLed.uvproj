@@ -382,14 +382,24 @@
               <FilePath>.\main.c</FilePath>
             </File>
             <File>
-              <FileName>delay_ms.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\Libraries\Delay\delay_ms.c</FilePath>
-            </File>
-            <File>
               <FileName>main.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\main.h</FilePath>
+            </File>
+            <File>
+              <FileName>delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>Z:\Users\nmhtdytgmail.com\Embedded\8051\Libraries\Delay\delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>port.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\port.h</FilePath>
+            </File>
+            <File>
+              <FileName>settings.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\settings.h</FilePath>
             </File>
           </Files>
         </Group>

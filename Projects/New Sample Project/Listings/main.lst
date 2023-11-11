@@ -1,0 +1,46 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              11/12/2023 00:27:37 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include "main.h"
+   2          
+   3          void setup()
+   4          {
+   5   1        // setup code here, to run once:
+   6   1        
+   7   1      }
+   8          
+   9          void loop()
+  10          {
+  11   1        // code section to run repeatedly:
+  12   1        
+  13   1      }
+  14          
+  15          void main()
+  16          {
+  17   1        setup();
+  18   1        while(TRUE)
+  19   1        {
+  20   2          loop();
+  21   2        }
+  22   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     10    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

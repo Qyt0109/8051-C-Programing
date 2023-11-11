@@ -1,9 +1,9 @@
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    10/30/2023  16:56:51  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    11/12/2023  00:04:35  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
-C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\delay_ms.obj TO .\Objects\object PRINT (.\Listings\object.m51)
->>  RAMSIZE (256)
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\delay.obj TO .\Objects\object PRINT (.\Listings\object.m51) RA
+>> MSIZE (256)
 
 
 MEMORY MODEL: SMALL
@@ -11,7 +11,7 @@ MEMORY MODEL: SMALL
 
 INPUT MODULES INCLUDED:
   .\Objects\main.obj (MAIN)
-  .\Objects\delay_ms.obj (DELAY_MS)
+  .\Objects\delay.obj (DELAY)
   C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
   C:\KEIL_V5\C51\LIB\C51S.LIB (?C?UIDIV)
   C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
@@ -38,14 +38,14 @@ LINK MAP OF MODULE:  .\Objects\object (MAIN)
             CODE    008FH     0063H     UNIT         ?PR?_FASTDISPLAY?MAIN
             CODE    00F2H     0055H     UNIT         ?C?LIB_CODE
             CODE    0147H     003FH     UNIT         ?PR?LOOP?MAIN
-            CODE    0186H     0020H     UNIT         ?CO?MAIN
-            CODE    01A6H     0020H     UNIT         ?PR?_DELAY_MS?DELAY_MS
-            CODE    01C6H     0015H     UNIT         ?PR?CHECKSTARTSTOPBUTTONTOTOGGLEISSTOP?MAIN
-            CODE    01DBH     0015H     UNIT         ?PR?CHECKCONTINUEPAUSEBUTTONTOTOGGLEISPAUSE?MAIN
-            CODE    01F0H     0011H     UNIT         ?PR?SETSTATUSLED?MAIN
-            CODE    0201H     000DH     UNIT         ?PR?SETUP?MAIN
-            CODE    020EH     0008H     UNIT         ?PR?MAIN?MAIN
-            CODE    0216H     0008H     UNIT         ?C_INITSEG
+            CODE    0186H     0020H     UNIT         ?PR?_DELAY_MS?DELAY
+            CODE    01A6H     0015H     UNIT         ?PR?CHECKSTARTSTOPBUTTONTOTOGGLEISSTOP?MAIN
+            CODE    01BBH     0015H     UNIT         ?PR?CHECKCONTINUEPAUSEBUTTONTOTOGGLEISPAUSE?MAIN
+            CODE    01D0H     0011H     UNIT         ?PR?SETSTATUSLED?MAIN
+            CODE    01E1H     0010H     UNIT         ?CO?MAIN
+            CODE    01F1H     000DH     UNIT         ?PR?SETUP?MAIN
+            CODE    01FEH     0008H     UNIT         ?PR?MAIN?MAIN
+            CODE    0206H     0008H     UNIT         ?C_INITSEG
 
 
 
@@ -59,7 +59,7 @@ SEGMENT                                            DATA_GROUP
   +--> ?PR?MAIN?MAIN
   +--> ?C_INITSEG
 
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  10/30/2023  16:56:51  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/12/2023  00:04:35  PAGE 2
 
 
 ?PR?MAIN?MAIN                                    -----    -----
@@ -73,14 +73,14 @@ SEGMENT                                            DATA_GROUP
   +--> ?PR?CHECKCONTINUEPAUSEBUTTONTOTOGGLEI...
 
 ?PR?CHECKSTARTSTOPBUTTONTOTOGGLEISSTO...         -----    -----
-  +--> ?PR?_DELAY_MS?DELAY_MS
+  +--> ?PR?_DELAY_MS?DELAY
 
 ?PR?_FASTDISPLAY?MAIN                            000AH    0002H
   +--> ?CO?MAIN
-  +--> ?PR?_DELAY_MS?DELAY_MS
+  +--> ?PR?_DELAY_MS?DELAY
 
 ?PR?CHECKCONTINUEPAUSEBUTTONTOTOGGLEI...         -----    -----
-  +--> ?PR?_DELAY_MS?DELAY_MS
+  +--> ?PR?_DELAY_MS?DELAY
 
 
 
@@ -98,160 +98,157 @@ SYMBOL TABLE OF MODULE:  .\Objects\object (MAIN)
   C:008FH         PUBLIC        _fastDisplay
   B:00B0H.0       PUBLIC        SEVEN_SEGMENT_LED_CONTROL_PIN_0
   B:00B0H.1       PUBLIC        SEVEN_SEGMENT_LED_CONTROL_PIN_1
-  C:020EH         PUBLIC        main
-  C:0201H         PUBLIC        setup
-  C:01DBH         PUBLIC        checkContinuePauseButtonToToggleIsPause
+  C:01FEH         PUBLIC        main
+  C:01F1H         PUBLIC        setup
+  C:01BBH         PUBLIC        checkContinuePauseButtonToToggleIsPause
   C:0147H         PUBLIC        loop
   B:0020H.0       PUBLIC        IS_STOP
-  C:0186H         PUBLIC        SEVEN_SEGMENT_LED_ANODE_CODES
-  C:01C6H         PUBLIC        checkStartStopButtonToToggleIsStop
-  C:0196H         PUBLIC        SEVEN_SEGMENT_LED_CATHODE_CODES
+  C:01E1H         PUBLIC        SEVEN_SEGMENT_LED_ANODE_CODES
+  C:01A6H         PUBLIC        checkStartStopButtonToToggleIsStop
   B:00B0H.3       PUBLIC        YELLOW_LED_PIN
   D:000CH         PUBLIC        display_number
-  C:01F0H         PUBLIC        setStatusLed
+  C:01D0H         PUBLIC        setStatusLed
   B:00B0H.2       PUBLIC        GREEN_LED_PIN
   B:0090H.1       PUBLIC        START_STOP_BUTTON
   B:0020H.1       PUBLIC        IS_PAUSE
   -------         PROC          SETUP
-  C:0201H         LINE#         8
-  C:0201H         LINE#         9
-  C:0201H         LINE#         11
-  C:0203H         LINE#         12
-  C:0205H         LINE#         13
-  C:0207H         LINE#         14
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  10/30/2023  16:56:51  PAGE 3
+  C:01F1H         LINE#         7
+  C:01F1H         LINE#         8
+  C:01F1H         LINE#         10
+  C:01F3H         LINE#         11
+  C:01F5H         LINE#         12
+  C:01F7H         LINE#         13
+  C:01F9H         LINE#         14
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/12/2023  00:04:35  PAGE 3
 
 
-  C:0209H         LINE#         15
-  C:020BH         LINE#         16
-  C:020DH         LINE#         17
+  C:01FBH         LINE#         15
+  C:01FDH         LINE#         16
   -------         ENDPROC       SETUP
   -------         PROC          CHECKSTARTSTOPBUTTONTOTOGGLEISSTOP
-  C:01C6H         LINE#         23
-  C:01C6H         LINE#         24
-  C:01C6H         LINE#         25
-  C:01C9H         LINE#         26
-  C:01C9H         LINE#         27
-  C:01D0H         LINE#         28
-  C:01D2H         LINE#         29
-  C:01D5H         LINE#         30
-  C:01D5H         LINE#         31
-  C:01D7H         LINE#         32
-  C:01DAH         LINE#         33
-  C:01DAH         LINE#         35
-  C:01DAH         LINE#         36
-  C:01DAH         LINE#         37
-  C:01DAH         LINE#         38
+  C:01A6H         LINE#         22
+  C:01A6H         LINE#         23
+  C:01A6H         LINE#         24
+  C:01A9H         LINE#         25
+  C:01A9H         LINE#         26
+  C:01B0H         LINE#         27
+  C:01B2H         LINE#         28
+  C:01B5H         LINE#         29
+  C:01B5H         LINE#         30
+  C:01B7H         LINE#         31
+  C:01BAH         LINE#         32
+  C:01BAH         LINE#         34
+  C:01BAH         LINE#         35
+  C:01BAH         LINE#         36
+  C:01BAH         LINE#         37
   -------         ENDPROC       CHECKSTARTSTOPBUTTONTOTOGGLEISSTOP
   -------         PROC          CHECKCONTINUEPAUSEBUTTONTOTOGGLEISPAUSE
-  C:01DBH         LINE#         40
-  C:01DBH         LINE#         41
-  C:01DBH         LINE#         42
-  C:01DEH         LINE#         43
-  C:01DEH         LINE#         44
-  C:01E5H         LINE#         45
-  C:01E7H         LINE#         46
-  C:01EAH         LINE#         47
-  C:01EAH         LINE#         48
-  C:01ECH         LINE#         49
-  C:01EFH         LINE#         50
-  C:01EFH         LINE#         52
-  C:01EFH         LINE#         53
-  C:01EFH         LINE#         54
-  C:01EFH         LINE#         55
+  C:01BBH         LINE#         39
+  C:01BBH         LINE#         40
+  C:01BBH         LINE#         41
+  C:01BEH         LINE#         42
+  C:01BEH         LINE#         43
+  C:01C5H         LINE#         44
+  C:01C7H         LINE#         45
+  C:01CAH         LINE#         46
+  C:01CAH         LINE#         47
+  C:01CCH         LINE#         48
+  C:01CFH         LINE#         49
+  C:01CFH         LINE#         51
+  C:01CFH         LINE#         52
+  C:01CFH         LINE#         53
+  C:01CFH         LINE#         54
   -------         ENDPROC       CHECKCONTINUEPAUSEBUTTONTOTOGGLEISPAUSE
   -------         PROC          _FASTDISPLAY
   D:000AH         SYMBOL        number
-  C:008FH         LINE#         61
+  C:008FH         LINE#         60
+  C:0093H         LINE#         61
   C:0093H         LINE#         62
-  C:0093H         LINE#         63
-  C:00B5H         LINE#         64
-  C:00B7H         LINE#         65
-  C:00BEH         LINE#         66
-  C:00C0H         LINE#         67
-  C:00E6H         LINE#         68
-  C:00E8H         LINE#         69
-  C:00EFH         LINE#         70
-  C:00F1H         LINE#         71
+  C:00B5H         LINE#         63
+  C:00B7H         LINE#         64
+  C:00BEH         LINE#         65
+  C:00C0H         LINE#         66
+  C:00E6H         LINE#         67
+  C:00E8H         LINE#         68
+  C:00EFH         LINE#         69
+  C:00F1H         LINE#         70
   -------         ENDPROC       _FASTDISPLAY
   -------         PROC          SETSTATUSLED
-  C:01F0H         LINE#         73
-  C:01F0H         LINE#         74
-  C:01F0H         LINE#         75
-  C:01F4H         LINE#         76
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  10/30/2023  16:56:51  PAGE 4
+  C:01D0H         LINE#         72
+  C:01D0H         LINE#         73
+  C:01D0H         LINE#         74
+  C:01D4H         LINE#         75
+  C:01E0H         LINE#         76
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/12/2023  00:04:35  PAGE 4
 
 
-  C:0200H         LINE#         77
   -------         ENDPROC       SETSTATUSLED
   -------         PROC          LOOP
   -------         DO            
   D:0008H         SYMBOL        x
   -------         ENDDO         
+  C:0147H         LINE#         78
   C:0147H         LINE#         79
-  C:0147H         LINE#         80
-  C:0147H         LINE#         82
-  C:014AH         LINE#         83
-  C:014DH         LINE#         84
+  C:0147H         LINE#         81
+  C:014AH         LINE#         82
+  C:014DH         LINE#         83
+  C:0150H         LINE#         84
   C:0150H         LINE#         85
-  C:0150H         LINE#         86
-  C:0150H         LINE#         88
+  C:0150H         LINE#         87
+  C:0158H         LINE#         88
   C:0158H         LINE#         89
-  C:0158H         LINE#         90
-  C:015FH         LINE#         91
-  C:0162H         LINE#         92
-  C:0165H         LINE#         93
-  C:0168H         LINE#         94
+  C:015FH         LINE#         90
+  C:0162H         LINE#         91
+  C:0165H         LINE#         92
+  C:0168H         LINE#         93
+  C:0179H         LINE#         94
   C:0179H         LINE#         95
-  C:0179H         LINE#         96
+  C:017CH         LINE#         96
   C:017CH         LINE#         97
-  C:017CH         LINE#         98
+  C:017EH         LINE#         98
   C:017EH         LINE#         99
-  C:017EH         LINE#         100
-  C:0180H         LINE#         102
-  C:0183H         LINE#         103
-  C:0185H         LINE#         104
+  C:0180H         LINE#         101
+  C:0183H         LINE#         102
+  C:0185H         LINE#         103
   -------         ENDPROC       LOOP
   -------         PROC          MAIN
-  C:020EH         LINE#         106
-  C:020EH         LINE#         107
-  C:020EH         LINE#         108
-  C:0211H         LINE#         109
-  C:0211H         LINE#         110
-  C:0211H         LINE#         111
-  C:0214H         LINE#         112
+  C:01FEH         LINE#         105
+  C:01FEH         LINE#         106
+  C:01FEH         LINE#         107
+  C:0201H         LINE#         108
+  C:0201H         LINE#         109
+  C:0201H         LINE#         110
+  C:0204H         LINE#         111
   -------         ENDPROC       MAIN
   -------         ENDMOD        MAIN
 
-  -------         MODULE        DELAY_MS
+  -------         MODULE        DELAY
   C:0000H         SYMBOL        _ICE_DUMMY_
-  D:0090H         PUBLIC        P1
-  D:00B0H         PUBLIC        P3
-  C:01A6H         PUBLIC        _delay_ms
+  C:0186H         PUBLIC        _delay_ms
   -------         PROC          _DELAY_MS
   D:0006H         SYMBOL        t_delay_ms
   -------         DO            
-  D:0004H         SYMBOL        i_x
+  D:0004H         SYMBOL        x
   D:0002H         SYMBOL        y
   -------         ENDDO         
-  C:01A6H         LINE#         14
-  C:01A6H         LINE#         15
-  C:01A6H         LINE#         17
-  C:01B0H         LINE#         18
-  C:01B0H         LINE#         19
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  10/30/2023  16:56:51  PAGE 5
+  C:0186H         LINE#         60
+  C:0186H         LINE#         61
+  C:0186H         LINE#         63
+  C:0190H         LINE#         64
+  C:0190H         LINE#         65
+  C:0193H         LINE#         66
+  C:0193H         LINE#         68
+  C:019EH         LINE#         69
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/12/2023  00:04:35  PAGE 5
 
 
-  C:01B3H         LINE#         20
-  C:01B3H         LINE#         22
-  C:01BEH         LINE#         23
-  C:01C5H         LINE#         24
+  C:01A5H         LINE#         70
   -------         ENDPROC       _DELAY_MS
-  -------         ENDMOD        DELAY_MS
+  -------         ENDMOD        DELAY
 
   -------         MODULE        ?C?UIDIV
   C:00F2H         PUBLIC        ?C?UIDIV
   -------         ENDMOD        ?C?UIDIV
 
-Program Size: data=14.2 xdata=0 code=542
+Program Size: data=14.2 xdata=0 code=526
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -3,8 +3,7 @@
 void setup()
 {
 	// setup code here, to run once:
-	button_pull_up = HIGH;	// Init logic High for Low Active button
-	led_pull_up = LOW;	// Init led off
+	
 }
 
 // Advanced Button checking
@@ -32,7 +31,7 @@ void loop()
 void main()
 {
 	setup();
-	while(1)
+	while(TRUE)
 	{
 		loop();
 	}

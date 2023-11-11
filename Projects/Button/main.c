@@ -19,7 +19,7 @@ void loop()
 void main()
 {
 	setup();
-	while(1)
+	while(TRUE)
 	{
 		loop();
 	}

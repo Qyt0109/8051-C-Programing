@@ -1,4 +1,4 @@
 ".\Objects\main.obj",
-".\Objects\delay_ms.obj" 
+".\Objects\delay.obj" 
 TO ".\Objects\AdvancedBlinkLed" 
 PRINT(".\Listings\AdvancedBlinkLed.m51") RAMSIZE(256) 
